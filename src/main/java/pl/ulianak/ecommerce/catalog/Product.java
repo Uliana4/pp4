@@ -1,11 +1,13 @@
 package pl.ulianak.ecommerce.catalog;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 public class Product {
     private final String id;
     private final String name;
     private final String description;
+    private BigDecimal price;
 
     public Product(UUID id, String name, String description) {
 
@@ -18,7 +20,11 @@ public class Product {
         return id;
     }
 
-    public String getPrice() {
-        return null;
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void changePrice(BigDecimal newPrice) {
+        this.price=newPrice;
     }
 }
