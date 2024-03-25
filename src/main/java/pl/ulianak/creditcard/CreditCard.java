@@ -18,6 +18,10 @@ public class CreditCard {
         this.balance = creditLimit;
     }
 
+    private boolean isCreditAlreadyAssigned() {
+        return this.creditLimit != null;
+    }
+
     private boolean isCreditBelowThreshold(BigDecimal creditLimit){
         return creditLimit.compareTo(BigDecimal.valueOf(100)) < 0;
     }
