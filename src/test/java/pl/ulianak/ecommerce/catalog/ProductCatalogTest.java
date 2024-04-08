@@ -11,16 +11,20 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ProductCatalogTest {
     @Test
     void itListAvailableProducts(){
-        ProductCatalog catalog = new ProductCatalog();
+        ProductCatalog catalog = createProductCatalog();
 
         List<Product> products = catalog.allProducts();
 
         assert products.isEmpty();
     }
 
+    private static ProductCatalog createProductCatalog() {
+        return new ProductCatalog(new ArrayListProductStorage());
+    }
+
     @Test
     void itAllowsToAddProduct(){
-        ProductCatalog catalog = new ProductCatalog();
+        ProductCatalog catalog = createProductCatalog();
 
         catalog.addProduct("Lego set 8083", "Nice one");
         List<Product> products = catalog.allProducts();
@@ -31,7 +35,7 @@ public class ProductCatalogTest {
 
     @Test
     void itLoadsSingleProductById(){
-        ProductCatalog catalog = new ProductCatalog();
+        ProductCatalog catalog = createProductCatalog();
         String id = catalog.addProduct("Logo set 8083", "Nice one");
 
         Product loaded = catalog.getProductBy(id);
@@ -41,7 +45,7 @@ public class ProductCatalogTest {
 
     @Test
     void itAllowsChangePrice(){
-        ProductCatalog catalog = new ProductCatalog();
+        ProductCatalog catalog = createProductCatalog();
         String id = catalog.addProduct("Logo set 8083", "Nice one");
 
         catalog.changePrice(id, BigDecimal.valueOf(10.10));
@@ -50,4 +54,7 @@ public class ProductCatalogTest {
         assertThat(BigDecimal.valueOf(10.10)).isEqualTo(loaded.getPrice());
     }
 
+    private static ProductCatalog ProductCatalog() {
+        return createProductCatalog();
+    }
 }

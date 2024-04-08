@@ -12,7 +12,7 @@ public class App {
     }
     @Bean
     ProductCatalog createMyProductCatalog(){
-        var catalog = new ProductCatalog();
+        var catalog = new ProductCatalog(new HasMapProductStorage());
         catalog.addProduct("Lego set 8083", "Nice done");
         catalog.addProduct("Cobi blocks", "Nice one");
 

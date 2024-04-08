@@ -23,7 +23,7 @@ public class CreditCard {
     }
 
     private boolean isCreditBelowThreshold(BigDecimal creditLimit){
-        return creditLimit.compareTo(BigDecimal.valueOf(100)) < 0;
+        return BigDecimal.valueOf(100).compareTo(creditLimit) > 0;
     }
 
     public BigDecimal getBalance(){

@@ -28,6 +28,10 @@ public class CreditCardTest {
         card.assignCreditLimit(BigDecimal.valueOf(1200));
         //Assert
         assert BigDecimal.valueOf(1200).equals(card.getBalance());
+        assertEquals(
+                BigDecimal.valueOf(1200),
+                card.getBalance()
+        );
     }
 
     @Test
@@ -57,6 +61,19 @@ public class CreditCardTest {
         assertThrows(
                 CreditAlreadyAssignedException.class,
                 () -> card.assignCreditLimit(BigDecimal.valueOf(1200))
+        );
+    }
+
+    @Test
+    void itAllowsToPayForSomething() {
+        CreditCard card = new CreditCard();
+        card.assignCreditLimit(BigDecimal.valueOf(1000));
+
+        card.pay(BigDecimal.valueOf(900));
+
+        assertEquals(
+                BigDecimal.valueOf(100),
+                card.getBalance()
         );
     }
 
