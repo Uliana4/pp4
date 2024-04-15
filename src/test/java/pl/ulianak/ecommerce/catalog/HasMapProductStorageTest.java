@@ -7,6 +7,7 @@ import java.util.UUID;
 import static org.assertj.core.api.Assertions.*;
 
 public class HasMapProductStorageTest {
+    private static final String TEST_PRODUCT_NAME = "test product";
     @Test
     void itStoreNewProduct(){
         ProductStorage storage = thereIsProductStorage();
@@ -16,15 +17,24 @@ public class HasMapProductStorageTest {
         assertThat(products)
                 .hasSize(1)
                 .extracting(Product::getName)
-                .contains("test product");
+                .contains(TEST_PRODUCT_NAME);
     }
 
     private Product thereIsExampleProduct(){
-        return new Product(UUID.randomUUID(), "test product", "nazwa");
+        return new Product(UUID.randomUUID(), TEST_PRODUCT_NAME, "fajna rzecz");
     }
 
     private ProductStorage thereIsProductStorage(){
         return new HasMapProductStorage();
+    }
+
+    @Test
+    void itAllowsAllProducts(){
+
+    }
+    @Test
+    void itLoadsAllProducts(){
+
     }
 
 }
