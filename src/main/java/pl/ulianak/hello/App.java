@@ -1,4 +1,4 @@
-package pl.ulianak.creditcard;
+package pl.ulianak.hello;
 
 import java.util.Collections;
 
@@ -13,5 +13,6 @@ public class App {
         System.out.println(String.format("Hello %s", name));
 
         var myList = Collections.emptyList();
+        System.out.println(myList);
     }
 }

@@ -7,6 +7,8 @@ import pl.ulianak.ecommerce.catalog.HasMapProductStorage;
 import pl.ulianak.ecommerce.catalog.ProductCatalog;
 import pl.ulianak.ecommerce.sales.SalesFacade;
 
+import java.math.BigDecimal;
+
 @SpringBootApplication
 public class App {
     public static void main(String [] args){
@@ -16,9 +18,11 @@ public class App {
     @Bean
     ProductCatalog createMyProductCatalog(){
         var catalog = new ProductCatalog(new HasMapProductStorage());
-        catalog.addProduct("Lego set 8083", "Nice done");
-        catalog.addProduct("Cobi blocks", "Nice one");
+        var pid1 = catalog.addProduct("Lego set 8083", "Nice done");
+        catalog.changePrice(pid1, BigDecimal.valueOf(100.10));
 
+        var pid2 = catalog.addProduct("Cobi blocks", "Nice one");
+        catalog.changePrice(pid2, BigDecimal.valueOf(50.10));
         return catalog;
     }
 
