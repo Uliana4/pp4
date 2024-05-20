@@ -1,6 +1,8 @@
 package pl.ulianak.ecommerce.sales;
 
 import org.junit.jupiter.api.Test;
+import pl.ulianak.ecommerce.sales.cart.InMemoryCartStorage;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigDecimal;
@@ -18,7 +20,7 @@ public class SalesTest {
     }
 
     private SalesFacade thereIsSalesFacade() {
-        return new SalesFacade();
+        return new SalesFacade(new InMemoryCartStorage(), new OfferCalculator());
     }
 
     private String thereIsExampleCustomer(String id){

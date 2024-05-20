@@ -1,4 +1,4 @@
-package pl.ulianak.ecommerce.catalog;
+package pl.ulianak.ecommerce.sales;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

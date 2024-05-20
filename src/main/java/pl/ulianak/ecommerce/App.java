@@ -5,7 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import pl.ulianak.ecommerce.catalog.HasMapProductStorage;
 import pl.ulianak.ecommerce.catalog.ProductCatalog;
+import pl.ulianak.ecommerce.sales.OfferCalculator;
 import pl.ulianak.ecommerce.sales.SalesFacade;
+import pl.ulianak.ecommerce.sales.cart.InMemoryCartStorage;
 
 import java.math.BigDecimal;
 
@@ -28,6 +30,6 @@ public class App {
 
     @Bean
     SalesFacade createSales(){
-        return new SalesFacade();
+        return new SalesFacade(new InMemoryCartStorage(), new OfferCalculator());
     }
 }
