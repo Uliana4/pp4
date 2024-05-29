@@ -2,6 +2,10 @@ package pl.ulianak.ecommerce.sales;
 
 import org.junit.jupiter.api.Test;
 import pl.ulianak.ecommerce.sales.cart.InMemoryCartStorage;
+import pl.ulianak.ecommerce.sales.offering.Offer;
+import pl.ulianak.ecommerce.sales.offering.OfferCalculator;
+import pl.ulianak.ecommerce.sales.reservation.ReservationRepository;
+import pl.ulianak.ecommerce.sales.reservation.SpyPaymentGateway;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,7 +24,12 @@ public class SalesTest {
     }
 
     private SalesFacade thereIsSalesFacade() {
-        return new SalesFacade(new InMemoryCartStorage(), new OfferCalculator());
+        return new SalesFacade(
+                new InMemoryCartStorage(),
+                new OfferCalculator(),
+                new SpyPaymentGateway(),
+                new ReservationRepository()
+        );
     }
 
     private String thereIsExampleCustomer(String id){

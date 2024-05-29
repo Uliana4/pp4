@@ -1,9 +1,9 @@
 package pl.ulianak.ecommerce.sales;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import pl.ulianak.ecommerce.sales.offering.Offer;
+import pl.ulianak.ecommerce.sales.reservation.AcceptOfferRequest;
+import pl.ulianak.ecommerce.sales.reservation.ReservationDetails;
 
 @RestController
 public class SalesController {
@@ -20,14 +20,14 @@ public class SalesController {
     }
 
     @PostMapping("/api/accept-offer")
-    ReservationDetails acceptOffer(){
+    ReservationDetails acceptOffer(@RequestBody AcceptOfferRequest acceptOfferRequest){
         String customerId = getCurrentCustomerId();
-        ReservationDetails details = sales.acceptOffer(customerId);
+        ReservationDetails details = sales.acceptOffer(customerId, acceptOfferRequest);
         return details;
     }
 
     @PostMapping("/api/add-to-cart/{productId}")
-    void addToCart(@PathVariable String productId){
+    void addToCart(@PathVariable(name="productId") String productId){
         String customerId = getCurrentCustomerId();
         sales.addToCart(customerId, productId);
     }

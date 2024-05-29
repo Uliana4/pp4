@@ -5,9 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import pl.ulianak.ecommerce.catalog.HasMapProductStorage;
 import pl.ulianak.ecommerce.catalog.ProductCatalog;
-import pl.ulianak.ecommerce.sales.OfferCalculator;
+import pl.ulianak.ecommerce.infrastructure.PayUPaymentGw;
+import pl.ulianak.ecommerce.sales.offering.OfferCalculator;
 import pl.ulianak.ecommerce.sales.SalesFacade;
 import pl.ulianak.ecommerce.sales.cart.InMemoryCartStorage;
+import pl.ulianak.ecommerce.sales.reservation.ReservationRepository;
 
 import java.math.BigDecimal;
 
@@ -25,11 +27,17 @@ public class App {
 
         var pid2 = catalog.addProduct("Cobi blocks", "Nice one");
         catalog.changePrice(pid2, BigDecimal.valueOf(50.10));
+
         return catalog;
     }
 
     @Bean
     SalesFacade createSales(){
-        return new SalesFacade(new InMemoryCartStorage(), new OfferCalculator());
+        return new SalesFacade(
+                new InMemoryCartStorage(),
+                new OfferCalculator(),
+                new PayUPaymentGw(),
+                new ReservationRepository()
+        );
     }
 }

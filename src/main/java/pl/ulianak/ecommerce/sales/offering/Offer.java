@@ -1,4 +1,4 @@
-package pl.ulianak.ecommerce.sales;
+package pl.ulianak.ecommerce.sales.offering;
 
 import java.math.BigDecimal;
 

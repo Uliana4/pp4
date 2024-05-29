@@ -22,6 +22,7 @@ public class SqlTest {
     @BeforeEach
     void setupDb(){
         jdbcTemplate.execute("DROP TABLE `product_catalog__products` IF EXISTS;");
+
         var createTableSql = """
              CREATE TABLE `product_catalog__products` (
                   `id` VARCHAR(255) NOT NULL,
@@ -62,7 +63,6 @@ public class SqlTest {
              """;
         jdbcTemplate.execute(myInsertSql);
 
-
         var countSql = "select count(*) from `product_catalog__products`";
         var results = jdbcTemplate.queryForObject(countSql, Integer.class);
 
@@ -81,7 +81,6 @@ public class SqlTest {
                 ;
              """;
         jdbcTemplate.update(myInsertSql,product.getId(), product.getName(), product.getPrice());
-
 
         var countSql = "select count(*) from `product_catalog__products`";
         var results = jdbcTemplate.queryForObject(countSql, Integer.class);

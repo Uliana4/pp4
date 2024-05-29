@@ -23,16 +23,16 @@ public class Cart {
         }
     }
 
-    private void increaseQuantity(String productId) {
-        productsQty.put(productId, productsQty.get(productId) +1);
-    }
-
     private boolean isInCart(String productId){
         return productsQty.containsKey(productId);
     }
 
     private void addToCart(String productId){
         productsQty.put(productId, 1);
+    }
+
+    private void increaseQuantity(String productId) {
+        productsQty.put(productId, productsQty.get(productId) +1);
     }
 
     public boolean isEmpty() {
