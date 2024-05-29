@@ -32,7 +32,6 @@ public class SalesController {
         sales.addToCart(customerId, productId);
     }
 
-
     private String getCurrentCustomerId(){
         return "Uliana";
     }

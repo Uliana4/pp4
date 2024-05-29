@@ -1,19 +1,11 @@
-package pl.ulianak.creditcard;
+package pl.ulianak.hello;
 
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
-import java.util.Collections;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class HelloTest {
-    @Test
-    void helloTest(){
-        var name = "Uliana";
-        var message = String.format("Hello %s", name);
-
-        System.out.println(message);
-    }
-
     @Test
     void equationTestV2(){
         //A  / Arrange
@@ -26,13 +18,24 @@ public class HelloTest {
     }
 
     @Test
+    void itFail() {
+        //A / Arrange  / Given
+        var a = 2;
+        var b = 4;
+        //A / Act      / When
+        var result = a + b;
+        //A / Assert   / Then / Expected
+        assert 10 == result;
+    }
+
+    @Test
     void itGreetUsername() {
         //Arrange
-        String name = "Jakub";
+        String name = "Uliana";
         //Act
         String message = String.format("Hello %s", name);
         //Assert
-        assertEquals("Hello Jakub", message);
+        assertEquals("Hello Uliana", message);
     }
 
     @Test

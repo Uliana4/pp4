@@ -1,6 +1,5 @@
 package pl.ulianak.ecommerce.sales.cart;
 
-
 import java.util.Optional;
 
 public class InMemoryCartStorage {

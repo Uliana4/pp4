@@ -1,4 +1,4 @@
-package pl.ulianak.ecommerce.catalog.playground;
+package pl.ulianak.ecommerce.playground;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
