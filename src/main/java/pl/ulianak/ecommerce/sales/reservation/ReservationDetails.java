@@ -15,11 +15,11 @@ public class ReservationDetails {
         return BigDecimal.valueOf(0);
     }
 
-    public Object getReservationId(){
+    public String getReservationId(){
         return reservationId;
     }
 
-    public  Object getPaymentUrl(){
+    public String getPaymentUrl(){
         return paymentUrl;
     }
 }
