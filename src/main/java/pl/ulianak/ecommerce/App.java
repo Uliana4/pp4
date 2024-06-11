@@ -31,12 +31,30 @@ public class App {
         return catalog;
     }
 
+
+    @Bean
+    PaymentGateway createPaymentGw(){
+        return new PayUPaymentGateway(
+                new PayU(
+
+                )
+        )
+    }
+
     @Bean
     SalesFacade createSales(){
         return new SalesFacade(
                 new InMemoryCartStorage(),
                 new OfferCalculator(),
-                new PayUPaymentGw(),
+                new PayUPaymentGateway(
+                        new PayU(
+                                new RestTemplate(),
+                                PayUCredentials.sandbox(
+                                        '300746',
+                                        "2ee"
+                                )
+                        )
+                ),
                 new ReservationRepository()
         );
     }
