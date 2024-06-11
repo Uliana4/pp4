@@ -4,6 +4,8 @@ public class Buyer {
     String email;
     String phone;
     String firstName;
+    String lastName;
+    String language;
 
     public String getEmail() {
         return email;
@@ -49,7 +51,4 @@ public class Buyer {
         this.language = language;
         return this;
     }
-
-    String lastName;
-    String language;
 }

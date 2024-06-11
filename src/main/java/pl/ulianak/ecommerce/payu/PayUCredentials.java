@@ -11,15 +11,15 @@ public class PayUCredentials {
         this.sandbox = sandbox;
     }
 
-    public static PayUCredentials sandbox(String clientId, String secret) {
-        return new PayUCredentials(clientId, secret, true);
+    public static PayUCredentials sandbox(String clientId, String clientSecret) {
+        return new PayUCredentials(clientId, clientSecret, true);
     }
 
     public String getClientId() {
         return clientId;
     }
 
-    public String getClientsSecret() {
+    public String getClientSecret() {
         return clientSecret;
     }
 

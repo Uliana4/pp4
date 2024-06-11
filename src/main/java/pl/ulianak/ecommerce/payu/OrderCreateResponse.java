@@ -3,6 +3,7 @@ package pl.ulianak.ecommerce.payu;
 public class OrderCreateResponse {
     String redirectUri;
     String orderId;
+    String extOrderId;
 
     public OrderCreateResponse setRedirectUri(String redirectUri) {
         this.redirectUri = redirectUri;
@@ -19,16 +20,15 @@ public class OrderCreateResponse {
         return this;
     }
 
-    String extOrderId;
     public String getRedirectUri() {
-        return null;
+        return redirectUri;
     }
 
     public String getOrderId() {
-        return null;
+        return orderId;
     }
 
     public String getExtOrderId() {
-        return null;
+        return extOrderId;
     }
 }

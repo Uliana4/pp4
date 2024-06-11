@@ -3,12 +3,16 @@ package pl.ulianak.ecommerce;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 import pl.ulianak.ecommerce.catalog.HasMapProductStorage;
 import pl.ulianak.ecommerce.catalog.ProductCatalog;
 import pl.ulianak.ecommerce.infrastructure.PayUPaymentGw;
+import pl.ulianak.ecommerce.payu.PayU;
+import pl.ulianak.ecommerce.payu.PayUCredentials;
 import pl.ulianak.ecommerce.sales.offering.OfferCalculator;
 import pl.ulianak.ecommerce.sales.SalesFacade;
 import pl.ulianak.ecommerce.sales.cart.InMemoryCartStorage;
+import pl.ulianak.ecommerce.sales.payment.PaymentGateway;
 import pl.ulianak.ecommerce.sales.reservation.ReservationRepository;
 
 import java.math.BigDecimal;
@@ -38,7 +42,7 @@ public class App {
                 new PayU(
 
                 )
-        )
+        );
     }
 
     @Bean
@@ -50,8 +54,8 @@ public class App {
                         new PayU(
                                 new RestTemplate(),
                                 PayUCredentials.sandbox(
-                                        '300746',
-                                        "2ee"
+                                        "300746",
+                                        "2ee86a66e5d97e3fadc400c9f19b065d"
                                 )
                         )
                 ),

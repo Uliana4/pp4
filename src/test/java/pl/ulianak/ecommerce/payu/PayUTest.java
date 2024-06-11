@@ -51,8 +51,7 @@ public class PayUTest {
         return new PayU(
                 new RestTemplate(),
                 PayUCredentials.sandbox(
-                        "300746",
-                        "2ee86a66e5d97e3fadc400c9f19b065d"
+                        "300746", "2ee86a66e5d97e3fadc400c9f19b065d"
                 )
         );
     }

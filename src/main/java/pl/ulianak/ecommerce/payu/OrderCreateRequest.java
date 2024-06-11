@@ -3,6 +3,13 @@ import java.util.List;
 
 public class OrderCreateRequest {
     String notifyUrl;
+    String customerIp;
+    String merchanPostId;
+    String description;
+    String currencyCode;
+    Integer totalAmount;
+    String extOrderId;
+    Buyer buyer;
 
     public String getCustomerIp() {
         return customerIp;
@@ -76,14 +83,6 @@ public class OrderCreateRequest {
         return this;
     }
 
-    String customerIp;
-    String merchanPostId;
-    String description;
-    String currencyCode;
-    Integer totalAmount;
-    String extOrderId;
-    Buyer buyer;
-
     public String getNotifyUrl() {
         return notifyUrl;
     }
@@ -94,5 +93,4 @@ public class OrderCreateRequest {
     }
 
     List<Product> products;
-
 }

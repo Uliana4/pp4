@@ -15,7 +15,7 @@ public class PayU {
     }
 
     public OrderCreateResponse handle(OrderCreateRequest request) {
-        var url = "https://secure.snd.payu.com/api/v2_1/orders";
+        var url = String.format("%s/api/v2_1/orders", credentials.getBaseUrl());
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json");
@@ -34,9 +34,9 @@ public class PayU {
         String body = String.format(
                 "grant_type=client_credentials&client_id=%s&client_secret=%s",
                 credentials.getClientId(),
-                credentials.getClientsSecret()
+                credentials.getClientSecret()
         );
-        var url = "https://secure.snd.payu.com/pl/standard/user/oauth/authorize";
+        var url = String.format("%s/pl/standard/user/oauth/authorize", credentials.getBaseUrl());
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);

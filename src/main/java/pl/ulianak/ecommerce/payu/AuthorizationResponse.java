@@ -1,6 +1,8 @@
 package pl.ulianak.ecommerce.payu;
 
 public class AuthorizationResponse {
+    String access_token;
+
     public String getAccess_token() {
         return access_token;
     }
@@ -10,10 +12,7 @@ public class AuthorizationResponse {
         return this;
     }
 
-    String access_token;
-
     public String getAccessToken(){
         return access_token;
     }
-
 }

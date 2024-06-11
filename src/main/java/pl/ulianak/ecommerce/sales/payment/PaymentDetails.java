@@ -4,7 +4,6 @@ public class PaymentDetails {
     private final String url;
 
     public PaymentDetails(String url) {
-
         this.url = url;
     }
 

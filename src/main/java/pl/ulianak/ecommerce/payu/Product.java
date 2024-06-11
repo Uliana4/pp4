@@ -3,6 +3,7 @@ package pl.ulianak.ecommerce.payu;
 public class Product {
     String name;
     Integer unitPrice;
+    Integer quantity;
 
     public String getName() {
         return name;
@@ -30,6 +31,4 @@ public class Product {
         this.quantity = quantity;
         return this;
     }
-
-    Integer quantity;
 }
