@@ -4,22 +4,21 @@
         <link rel="stylesheet" href="/css/main.css">
     </head>
     <body>
-        <h1>Welcome to my Ecommerce app</h1>
         <header>
             <div class = "offer">
                 Total: <span class="offer__total">0.0</span>
                 Items Count: <span class="offer__itemsCount">0</span>
-                <form>
+                <form id="checkout">
                     <input name="firstname" placeholder="Uliana"/>
                     <input name="lastname" placeholder="Kutylovskaya"/>
                     <input name="email" type="email" placeholder="uliana.kutylovskaya@example.com"/>
-                    <button type="submit">Checkout</button>
+                    <button type="submit">Accept offer</button>
                 </form>
             </div>
         </header>
 
-        <ul id="productsList" class="products"></ul>
-
+        <h1>Welcome to my Ecommerce</h1>
+        <ul id="productsList" class="productsList"></ul>
         <p>src/main/resources/static/index.html</p>
         <script type="text/javascript" src="/js/main.js"></script>
     </body>

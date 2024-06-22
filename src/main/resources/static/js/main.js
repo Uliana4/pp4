@@ -15,36 +15,36 @@ const addProduct = (productId) => {
 }
 
 const acceptOffer = (acceptOfferRequest) => {
-    return fetch("/api/accept-offer"`, {
+    return fetch("/api/accept-offer", {
         method: "POST",
         headers: {
             "Content-Type" : "application/json"
         },
         body: JSON.stringify(acceptOfferRequest)
-    })
-        .then(response => response.json());
+    }).then(response => response.json());
 }
 
-const checkoutForm = document.querySelector(".checkout__form");
+const checkoutForm = document.querySelector("#checkout");
 checkoutForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const acceptOfferRequest = {
         firstname: checkoutForm.querySelector('input[name="firstname"]').value,
         lastname: checkoutForm.querySelector('input[name="lastname"]').value,
-        email: checkoutForm.querySelector('input[name="email"]').value
+        email: checkoutForm.querySelector('input[name="email"]').value,
     }
+
     acceptOffer(acceptOfferRequest)
-        .then(reservationDetails => )
+        .then(reservationDetails => window.location.href = reservationDetails.paymentUrl)
 });
 
-
-const createProductHtml = (productData) => {
+createProductHtmlEl = (productData) => {
     const template = `
         <div>
             <h4>${productData.name}</h4>
+            <span>${productData.description}</span>
             <span>${productData.price}</span>
-            <img src="https://picsum.photos/536/354"/>
+            <img src="https://picsum.photos/536/354" width=200 height=200 />
             <button data-id="${productData.id}">Add to cart</button>
         </div>
     `;
@@ -54,34 +54,33 @@ const createProductHtml = (productData) => {
     return productEl;
 }
 
-const refreshOffer = () => {
-    const totalEl = document.querySelector(".offer__total");
-    const totalEl = document.querySelector(".offer__itemsCount");
+const refreshCurrentOffer = () => {
+    const totalEl = document.querySelector('#offer__total');
+    const itemsCountEl = document.querySelector('#offer__itemsCount');
 
     getCurrentOffer()
         .then(offer => {
-            totalEl.textContent = `${offer.total`} PLN;
-            itemsEl.textContent = `${offer.itemsCount} Items`;
+            totalEl.textContent = `${offer.total} PLN`;
+            itemsCountEl.textContent = `${offer.itemsCount} 🛒Items`;
         });
 }
 
 const initializeCartHandler = (productHtmlEl) => {
-    const addToCartBtn = productHtmlEl.querySelector("button");
-    addToCartBtn.addEventListener("click", () => {
-            const productId = addToCartBtn.getAttribute("data-id");
+    const addToCartBtn = productHtmlEl.querySelector("button[data-id]");
+    addToCartBtn.addEventListener("click", (event) => {
+        const productId = event.target.getAttribute("data-id");
+        addProduct(productId)
+            .then(refreshCurrentOffer());
+        console.log("I going to add product: ${productId}");
+    });
 
-            addProduct(productId)
-                .then(refreshOffer())
-            console.log(`I going to add product: ${productId`);
-        });
-
-    return productHtmlEl;;
+    return productHtmlEl;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     const productsList = document.querySelector("#productsList");
     getProducts()
-        .then(productsAsJsonObj => productsAsJsonObj.map(createProductHtml))
+        .then(productsAsJsonObj => productsAsJsonObj.map(createProductHtmlEl))
         .then(productsAsHtmlEl => productsAsHtmlEl.map(initializeCartHandler))
         .then(productsAsHtmlEl => {
             productsAsHtmlEl.forEach(productEl => productsList.appendChild(productEl));

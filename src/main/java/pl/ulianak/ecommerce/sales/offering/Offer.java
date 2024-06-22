@@ -3,11 +3,19 @@ package pl.ulianak.ecommerce.sales.offering;
 import java.math.BigDecimal;
 
 public class Offer {
+    private final int itemsCount;
+    private final BigDecimal total;
+
+    public Offer(BigDecimal total, int itemsCount) {
+        this.total = total;
+        this.itemsCount = itemsCount;
+    }
+
     public int getItemsCount() {
-        return 0;
+        return itemsCount;
     }
 
     public BigDecimal getTotal() {
-        return BigDecimal.ZERO;
+        return total;
     }
 }
