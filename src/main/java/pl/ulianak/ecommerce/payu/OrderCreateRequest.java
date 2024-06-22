@@ -10,6 +10,7 @@ public class OrderCreateRequest {
     Integer totalAmount;
     String extOrderId;
     Buyer buyer;
+    List<Product> products;
 
     public String getCustomerIp() {
         return customerIp;
@@ -92,5 +93,4 @@ public class OrderCreateRequest {
         return this;
     }
 
-    List<Product> products;
 }

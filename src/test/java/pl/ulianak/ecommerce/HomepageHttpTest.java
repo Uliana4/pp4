@@ -15,14 +15,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 )
 public class HomepageHttpTest {
     @LocalServerPort
-    int localPort;
+    int port;
 
     @Autowired
     TestRestTemplate http;
 
     @Test
     void itLoadsHomepage(){
-        var url = String.format("http://localhost:%s/%s", localPort, "");
+        var url = String.format("http://localhost:%s/%s", port, "");
 
         ResponseEntity<String> response = http.getForEntity(url, String.class);
 

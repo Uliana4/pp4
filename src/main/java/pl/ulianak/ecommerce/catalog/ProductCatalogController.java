@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 public class ProductCatalogController {
-    ProductCatalog catalog;
+    private final ProductCatalog catalog;
     public ProductCatalogController(ProductCatalog catalog) {
         this.catalog = catalog;
     }

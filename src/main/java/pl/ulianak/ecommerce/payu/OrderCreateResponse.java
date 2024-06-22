@@ -4,6 +4,16 @@ public class OrderCreateResponse {
     String redirectUri;
     String orderId;
     String extOrderId;
+    Status status;
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public OrderCreateResponse setStatus(Status status) {
+        this.status = status;
+        return this;
+    }
 
     public OrderCreateResponse setRedirectUri(String redirectUri) {
         this.redirectUri = redirectUri;

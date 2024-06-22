@@ -7,7 +7,7 @@ public class CreditCard {
     private BigDecimal balance;
 
     public void assignCreditLimit(BigDecimal creditLimit){
-        if (this.creditLimit != null){
+        if (isCreditAlreadyAssigned()){
             throw new CreditAlreadyAssignedException();
         }
         if (isCreditBelowThreshold(creditLimit)) {

@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.*;
 )
 public class HttpProductCatalogTest {
     @LocalServerPort
-    private int localPort;
+    int localPort;
 
     @Autowired
     TestRestTemplate http;
