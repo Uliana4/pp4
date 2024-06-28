@@ -4,8 +4,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
+import pl.ulianak.ecommerce.infrastructure.PayUPaymentGateway;
 
-public class PayU {
+
+public class PayU extends PayUPaymentGateway {
     RestTemplate http;
     PayUCredentials credentials;
 
@@ -15,8 +17,6 @@ public class PayU {
     }
 
     public OrderCreateResponse handle(OrderCreateRequest request) {
-        var url = String.format("%s/api/v2_1/orders", credentials.getBaseUrl());
-
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json");
         headers.add("Authorization",
@@ -25,7 +25,10 @@ public class PayU {
 
         HttpEntity<OrderCreateRequest> headerAwareRequest = new HttpEntity<>(request, headers);
 
-        ResponseEntity<OrderCreateResponse> response = http.postForEntity(url, headerAwareRequest, OrderCreateResponse.class);
+        ResponseEntity<OrderCreateResponse> response = http.postForEntity(
+                String.format("%s/api/v2_1/orders", credentials.getBaseUrl()),
+                headerAwareRequest,
+                OrderCreateResponse.class);
 
         return response.getBody();
     }

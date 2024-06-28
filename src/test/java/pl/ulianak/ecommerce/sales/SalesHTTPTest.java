@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import pl.ulianak.ecommerce.catalog.ProductCatalog;
 import pl.ulianak.ecommerce.sales.offering.Offer;
-import pl.ulianak.ecommerce.sales.reservation.AcceptOfferRequest;
+import pl.ulianak.ecommerce.sales.offering.AcceptOfferRequest;
 import pl.ulianak.ecommerce.sales.reservation.ReservationDetails;
 
 import static org.assertj.core.api.Assertions.*;

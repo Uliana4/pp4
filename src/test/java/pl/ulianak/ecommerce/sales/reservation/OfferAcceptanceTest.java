@@ -1,19 +1,22 @@
 package pl.ulianak.ecommerce.sales.reservation;
 
-import ch.qos.logback.core.net.server.Client;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import pl.ulianak.ecommerce.catalog.ProductCatalog;
 import pl.ulianak.ecommerce.sales.SalesFacade;
 import pl.ulianak.ecommerce.sales.cart.InMemoryCartStorage;
+import pl.ulianak.ecommerce.sales.offering.AcceptOfferRequest;
 import pl.ulianak.ecommerce.sales.offering.OfferCalculator;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigDecimal;
 import java.util.Optional;
 
 public class OfferAcceptanceTest {
+    @Autowired
+    ProductCatalog catalog;
 
     private SpyPaymentGateway spyPaymentGateway;
     private ReservationRepository reservationRepository;
@@ -96,7 +99,7 @@ public class OfferAcceptanceTest {
     private SalesFacade thereIsSales() {
         return new SalesFacade(
                 new InMemoryCartStorage(),
-                new OfferCalculator(),
+                new OfferCalculator(catalog),
                 spyPaymentGateway,
                 reservationRepository
         );

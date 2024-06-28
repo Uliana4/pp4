@@ -1,4 +1,4 @@
-package pl.ulianak.ecommerce.sales.reservation;
+package pl.ulianak.ecommerce.sales.offering;
 
 public class AcceptOfferRequest {
     String firstname;

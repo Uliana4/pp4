@@ -3,12 +3,12 @@ package pl.ulianak.ecommerce.sales.reservation;
 import java.math.BigDecimal;
 
 public class ReservationDetails {
-    private final String reservationId;
-    private final String paymentUrl;
+    private String reservationId;
+    private String paymentUrl;
 
-    public ReservationDetails(String reservationId, String paymentURL) {
+    public ReservationDetails(String reservationId, String paymentUrl) {
         this.reservationId = reservationId;
-        this.paymentUrl = paymentURL;
+        this.paymentUrl = paymentUrl;
     }
 
     public BigDecimal getTotal(){
@@ -19,7 +19,17 @@ public class ReservationDetails {
         return reservationId;
     }
 
+    public ReservationDetails setReservationId(String reservationId) {
+        this.reservationId = reservationId;
+        return this;
+    }
+
     public String getPaymentUrl(){
         return paymentUrl;
+    }
+
+    public ReservationDetails setPaymentURL(String paymentUrl) {
+        this.paymentUrl = paymentUrl;
+        return this;
     }
 }

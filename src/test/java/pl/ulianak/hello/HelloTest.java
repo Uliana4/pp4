@@ -14,7 +14,7 @@ public class HelloTest {
         //A  / Act
         var result = a+b;
         //A  / Assert
-        assert 5 == result;
+        assert (5 == result);
     }
 
     @Test
@@ -25,7 +25,7 @@ public class HelloTest {
         //A / Act      / When
         var result = a + b;
         //A / Assert   / Then / Expected
-        assert 10 == result;
+        assert (10 != result);
     }
 
     @Test

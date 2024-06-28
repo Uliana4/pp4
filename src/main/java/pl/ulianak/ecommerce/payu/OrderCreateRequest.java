@@ -4,7 +4,7 @@ import java.util.List;
 public class OrderCreateRequest {
     String notifyUrl;
     String customerIp;
-    String merchanPostId;
+    String merchantPosId;
     String description;
     String currencyCode;
     Integer totalAmount;
@@ -21,12 +21,12 @@ public class OrderCreateRequest {
         return this;
     }
 
-    public String getMerchanPostId() {
-        return merchanPostId;
+    public String getMerchantPosId() {
+        return merchantPosId;
     }
 
-    public OrderCreateRequest setMerchanPostId(String merchanPostId) {
-        this.merchanPostId = merchanPostId;
+    public OrderCreateRequest setMerchantPosId(String merchantPosId) {
+        this.merchantPosId = merchantPosId;
         return this;
     }
 

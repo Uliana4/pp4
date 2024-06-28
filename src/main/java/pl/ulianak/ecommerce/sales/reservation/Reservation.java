@@ -1,5 +1,6 @@
 package pl.ulianak.ecommerce.sales.reservation;
 
+import pl.ulianak.ecommerce.sales.offering.AcceptOfferRequest;
 import pl.ulianak.ecommerce.sales.offering.Offer;
 import pl.ulianak.ecommerce.sales.payment.PaymentDetails;
 

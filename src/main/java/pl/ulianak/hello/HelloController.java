@@ -1,4 +1,4 @@
-package pl.ulianak.ecommerce.catalog.hello;
+package pl.ulianak.hello;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

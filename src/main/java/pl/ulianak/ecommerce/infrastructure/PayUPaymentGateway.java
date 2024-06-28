@@ -1,5 +1,6 @@
-package pl.ulianak.ecommerce;
+package pl.ulianak.ecommerce.infrastructure;
 
+import org.springframework.web.client.RestTemplate;
 import pl.ulianak.ecommerce.payu.*;
 import pl.ulianak.ecommerce.sales.payment.PaymentDetails;
 import pl.ulianak.ecommerce.sales.payment.PaymentGateway;
@@ -15,14 +16,20 @@ public class PayUPaymentGateway implements PaymentGateway {
         this.payU = payU;
     }
 
+    public PayUPaymentGateway(RestTemplate restTemplate, PayUCredentials sandbox) {
+    }
+
+    public PayUPaymentGateway() {
+    }
+
     @Override
     public PaymentDetails registerPayment(RegisterPaymentRequest registerPaymentRequest){
         var request = new OrderCreateRequest();
         request.setNotifyUrl("https://your.eshop.com/notify")
-                .setCustomerIp("*127.0.0.1*")
-                .setMerchanPostId("*300746")
+                .setCustomerIp("127.0.0.1")
+                .setMerchantPosId("300746")
                 .setDescription("My ebook store")
-                .setCurrencyCode("*PLN")
+                .setCurrencyCode("PLN")
                 .setTotalAmount(registerPaymentRequest.getTotalAsPennies())
                 .setExtOrderId(UUID.randomUUID().toString())
                 .setBuyer(new Buyer()
@@ -41,6 +48,6 @@ public class PayUPaymentGateway implements PaymentGateway {
 
         OrderCreateResponse response = payU.handle(request);
 
-        return new PaymentDetails(response.getRedirectUri());
+        return new PaymentDetails(response.getRedirectUri(), response.getOrderId());
     }
 }

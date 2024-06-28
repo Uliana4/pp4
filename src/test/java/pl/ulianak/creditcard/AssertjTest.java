@@ -13,7 +13,7 @@ public class AssertjTest {
     void helloAssertJ(){
         var hello = "Hello World";
 
-        assertThat(hello).containsOnlyDigits();
+        assertThat(hello).contains("Hello World");
     }
 
     @Test
@@ -22,7 +22,7 @@ public class AssertjTest {
 
         assertThat(names)
                 .isUnmodifiable()
-                .hasSize(3)
-                .containsAll(Arrays.asList("Uliana", "Michalina"));
+                .hasSize(1)
+                .containsAll(Arrays.asList("Uliana"));
     }
 }

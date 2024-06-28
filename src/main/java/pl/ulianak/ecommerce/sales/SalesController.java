@@ -2,7 +2,7 @@ package pl.ulianak.ecommerce.sales;
 
 import org.springframework.web.bind.annotation.*;
 import pl.ulianak.ecommerce.sales.offering.Offer;
-import pl.ulianak.ecommerce.sales.reservation.AcceptOfferRequest;
+import pl.ulianak.ecommerce.sales.offering.AcceptOfferRequest;
 import pl.ulianak.ecommerce.sales.reservation.ReservationDetails;
 
 @RestController

@@ -1,4 +1,4 @@
-package pl.ulianak.hello;
+package pl.ulianak.creditcard;
 
 import java.util.Collections;
 

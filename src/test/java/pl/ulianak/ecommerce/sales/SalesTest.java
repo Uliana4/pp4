@@ -1,6 +1,8 @@
 package pl.ulianak.ecommerce.sales;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import pl.ulianak.ecommerce.catalog.ProductCatalog;
 import pl.ulianak.ecommerce.sales.cart.InMemoryCartStorage;
 import pl.ulianak.ecommerce.sales.offering.Offer;
 import pl.ulianak.ecommerce.sales.offering.OfferCalculator;
@@ -12,6 +14,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.math.BigDecimal;
 
 public class SalesTest {
+    @Autowired
+    ProductCatalog catalog;
+
     @Test
     void itShowsOffer(){
         SalesFacade sales = thereIsSalesFacade();
@@ -26,7 +31,7 @@ public class SalesTest {
     private SalesFacade thereIsSalesFacade() {
         return new SalesFacade(
                 new InMemoryCartStorage(),
-                new OfferCalculator(),
+                new OfferCalculator(catalog),
                 new SpyPaymentGateway(),
                 new ReservationRepository()
         );

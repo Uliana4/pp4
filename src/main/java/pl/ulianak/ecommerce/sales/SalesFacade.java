@@ -9,7 +9,7 @@ import pl.ulianak.ecommerce.sales.offering.OfferCalculator;
 import pl.ulianak.ecommerce.sales.payment.PaymentDetails;
 import pl.ulianak.ecommerce.sales.payment.PaymentGateway;
 import pl.ulianak.ecommerce.sales.payment.RegisterPaymentRequest;
-import pl.ulianak.ecommerce.sales.reservation.AcceptOfferRequest;
+import pl.ulianak.ecommerce.sales.offering.AcceptOfferRequest;
 import pl.ulianak.ecommerce.sales.reservation.ReservationDetails;
 
 import java.util.UUID;
@@ -42,10 +42,9 @@ public class SalesFacade {
     }
 
     public Offer getCurrentOffer(String customerId) {
-        Cart cart = loadCartForCustomer(customerId);
-        Offer offer = offerCalculator.calculate(cart.getLines());
-
-        return offer;
+        Cart cart = cartStorage.findByCustomerId(customerId)
+                .orElse(Cart.empty());
+        return offerCalculator.calculate(cart.getLines());
     }
 
     public ReservationDetails acceptOffer(String customerId, AcceptOfferRequest acceptOfferRequest) {

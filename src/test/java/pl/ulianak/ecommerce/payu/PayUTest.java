@@ -1,13 +1,16 @@
 package pl.ulianak.ecommerce.payu;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.client.RestTemplate;
+import pl.ulianak.ecommerce.payu.*;
 
 import java.util.Arrays;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 public class PayUTest {
     @Test
     void itAllowsToRegisterPayment(){
@@ -24,10 +27,10 @@ public class PayUTest {
     private OrderCreateRequest thereIsExamplePaymentRegisterRequest() {
         var request = new OrderCreateRequest();
         request.setNotifyUrl("https://your.eshop.com/notify")
-                .setCustomerIp("*127.0.0.1*")
-                .setMerchanPostId("*300746")
+                .setCustomerIp("127.0.0.1")
+                .setMerchantPosId("300746")
                 .setDescription("My ebook store")
-                .setCurrencyCode("*PLN")
+                .setCurrencyCode("PLN")
                 .setTotalAmount(21000)
                 .setExtOrderId(UUID.randomUUID().toString())
                 .setBuyer(new Buyer()

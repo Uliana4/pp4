@@ -35,4 +35,15 @@ public class HttpProductCatalogTest {
                 .extracting("name")
                 .contains("Example product");
     }
+
+    @Test
+    void itLoadsHomePage(){
+        var url = String.format("http://localhost:%s/%s",
+                localPort,
+                ""
+        );
+        ResponseEntity<String> response = http.getForEntity(url, String.class);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).contains("Welcome");
+    }
 }

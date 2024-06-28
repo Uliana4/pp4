@@ -3,6 +3,7 @@ package pl.ulianak.ecommerce.sales.cart;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import pl.ulianak.ecommerce.sales.SalesFacade;
 
 public class InMemoryCartStorage {
     Map<String, Cart> carts;
@@ -12,7 +13,7 @@ public class InMemoryCartStorage {
     }
 
     public Optional<Cart> findByCustomerId(String customerId) {
-        return Optional.of(carts.get(customerId));
+        return Optional.ofNullable(carts.get(customerId));
     }
 
     public void save(String customerId, Cart cart){

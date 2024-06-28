@@ -6,8 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 import pl.ulianak.ecommerce.catalog.HasMapProductStorage;
 import pl.ulianak.ecommerce.catalog.ProductCatalog;
-import pl.ulianak.ecommerce.infrastructure.PayUPaymentGw;
-import pl.ulianak.ecommerce.payu.PayU;
+import pl.ulianak.ecommerce.infrastructure.PayUPaymentGateway;
 import pl.ulianak.ecommerce.payu.PayUCredentials;
 import pl.ulianak.ecommerce.sales.offering.OfferCalculator;
 import pl.ulianak.ecommerce.sales.SalesFacade;
@@ -39,26 +38,20 @@ public class App {
     @Bean
     PaymentGateway createPaymentGw(){
         return new PayUPaymentGateway(
-                new PayU(
-
+                new RestTemplate(),
+                PayUCredentials.sandbox(
+                        "300746",
+                        "2ee86a66e5d97e3fadc400c9f19b065d"
                 )
         );
     }
 
     @Bean
-    SalesFacade createSales(){
+    SalesFacade createSales(ProductCatalog catalog){
         return new SalesFacade(
                 new InMemoryCartStorage(),
-                new OfferCalculator(),
-                new PayUPaymentGateway(
-                        new PayU(
-                                new RestTemplate(),
-                                PayUCredentials.sandbox(
-                                        "300746",
-                                        "2ee86a66e5d97e3fadc400c9f19b065d"
-                                )
-                        )
-                ),
+                new OfferCalculator(catalog),
+                createPaymentGw(),
                 new ReservationRepository()
         );
     }

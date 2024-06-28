@@ -1,8 +1,8 @@
 package pl.ulianak.ecommerce.payu;
 
 public class PayUCredentials {
-    private String clientSecret;
-    private String clientId;
+    private final String clientSecret;
+    private final String clientId;
     private boolean sandbox;
 
     public PayUCredentials(String clientId, String clientSecret, boolean sandbox){
@@ -21,6 +21,10 @@ public class PayUCredentials {
 
     public String getClientSecret() {
         return clientSecret;
+    }
+
+    public boolean isSandbox() {
+        return sandbox;
     }
 
     public String getBaseUrl(){
