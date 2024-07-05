@@ -18,7 +18,7 @@ public class ReservationDetails {
     }
 
     public BigDecimal getTotal(){
-        return BigDecimal.valueOf(0);
+        return total;
     }
 
     public ReservationDetails setTotal(BigDecimal total) {
