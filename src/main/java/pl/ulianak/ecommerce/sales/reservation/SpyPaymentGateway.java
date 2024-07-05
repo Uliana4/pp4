@@ -1,23 +1,20 @@
 package pl.ulianak.ecommerce.sales.reservation;
 
-import pl.ulianak.ecommerce.payu.OrderCreateResponse;
 import pl.ulianak.ecommerce.sales.payment.PaymentDetails;
 import pl.ulianak.ecommerce.sales.payment.PaymentGateway;
 import pl.ulianak.ecommerce.sales.payment.RegisterPaymentRequest;
 
+import java.util.UUID;
+
 public class SpyPaymentGateway implements PaymentGateway {
     Integer requestCount = 0;
-    public RegisterPaymentRequest lastRequest;
-    private OrderCreateResponse response;
-
-    public Integer getRequestsCount(){
+    public Integer getRequestsCount() {
         return requestCount;
     }
 
     @Override
-    public PaymentDetails registerPayment(RegisterPaymentRequest registerPaymentRequest){
+    public PaymentDetails registerPayment(RegisterPaymentRequest registerPaymentRequest) {
         this.requestCount++;
-        lastRequest = registerPaymentRequest;
-        return new PaymentDetails("http://spy-gateway", response.getOrderId());
+        return new PaymentDetails("http://spy-gateway", UUID.randomUUID().toString());
     }
 }

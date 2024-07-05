@@ -1,15 +1,19 @@
 package pl.ulianak.ecommerce.sales.offering;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import pl.ulianak.ecommerce.sales.cart.CartLine;
-import pl.ulianak.ecommerce.catalog.ProductCatalog;
+import org.springframework.stereotype.Component;
 import pl.ulianak.ecommerce.catalog.Product;
+import pl.ulianak.ecommerce.catalog.ProductCatalog;
+import pl.ulianak.ecommerce.sales.cart.CartLine;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class OfferCalculator {
-    private ProductCatalog catalog;
+
+    private final ProductCatalog catalog;
 
     @Autowired
     public OfferCalculator(ProductCatalog catalog) {
@@ -22,7 +26,7 @@ public class OfferCalculator {
 
         for (CartLine cartLine : lines) {
             quantitySum += cartLine.getQty();
-            Product product = catalog.getProductBy(cartLine.getProductId());
+            Product product = catalog.getProductById(cartLine.getProductId());
             BigDecimal productPrice = product.getPrice();
             int nthForFree = 5; // every 5nth product for free
             int quantity = cartLine.getQty() - cartLine.getQty() / nthForFree;

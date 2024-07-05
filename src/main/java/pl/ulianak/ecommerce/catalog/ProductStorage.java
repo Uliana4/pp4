@@ -3,9 +3,10 @@ package pl.ulianak.ecommerce.catalog;
 import java.util.List;
 
 public interface ProductStorage {
-    List<Product> allProducts();
+    List<Product> getAllProducts();
 
     void add(Product newProduct);
+    void setUpDatabase();
 
-    Product getProductBy(String id);
+    Product getProductById(String id);
 }

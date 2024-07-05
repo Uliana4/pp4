@@ -1,9 +1,150 @@
 body {
-    background: yellow;
+    background-color: #E0F7FA; /* Светлый голубой цвет фона */
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0px;
+    padding: 0px;
 }
 
-.productsList, #productsList {
-        display: flex;
-        justify-content: space-around;
-        list-style: none;
+.container{
+    background-color: #E0F7FA;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: #1976D2; /* Насыщенный голубой цвет фона */
+    flex: 1;
+    color: #FFFFFF; /* Белый цвет текста */
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    width: 100%;
+    align-self: center;
+    border-bottom: 2px solid #1976D2; /* Синхронизировано с фоном */
+    box-shadow: 0px 5px 20px 0px #B0BEC5; /* Легкая тень */
+    overflow-x: hidden;
+    padding: 10px 0px; /* Увеличен padding для лучшего восприятия */
+}
+.catalog {
+    background-color: #E0F7FA; /* Светло-оранжевый цвет фона */
+    flex: 13;
+    width: 65%;
+    align-self: center;
+    overflow-y: scroll;
+    padding: 10px 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.product{
+    display: flex;
+    margin-bottom: 25px;
+    width: 430px;
+    height: 300px;
+    border: 2px solid rgba(0, 0, 0, 0);
+    transition: 0.1s ease-in-out;
+}
+.product:hover{
+    -webkit-box-shadow: 8px 8px 11px -9px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 8px 8px 11px -9px rgba(66, 68, 90, 1);
+    box-shadow: 8px 8px 11px -9px rgba(66, 68, 90, 1);
+    border: white 2px solid;
+    transform: scale(1.01);
+    transition: 0.1s ease-in-out;
+}
+.product__left{
+    width: 200PX;
+}
+.product__right{
+    background-color: #DDA0DD;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 280px;
+    width: 250PX;
+}
+.product:hover .product__right{
+    background-color: #9370DB;
+    transition: 0.1s ease-in-out;
+}
+.product__name{
+    font-size: 23px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.product__description{
+    color: rgb(58, 28, 28);
+    max-height: 100px;
+    overflow-y:auto ;
+    margin-bottom: 10px;
+}
+.product__price{
+    text-align: left;
+    color: white;
+}
+.product__button{
+    display: flex;
+    justify-content: center;
+}
+.product__button button{
+    padding: 3px;
+    width: 100px;
+    border-radius: 7px;
+    border: 2px solid rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    background-color: white;
+    transition: 0.1s ease-in-out;
+}
+.product__button button:hover{
+    border: 2px solid rgb(172, 1, 1);
+    cursor: pointer;
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(255, 255, 255, 1);
+    -moz-box-shadow: 0px 0px 5px 1px rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 5px 1px rgba(255, 255, 255, 1);
+}
+
+.checkout__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+.checkout__form div:nth-child(1) {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkout__form div:nth-child(1) button {
+    display: block;
+    width: 50%;
+    height: 50%;
+    font-size: 21px;
+    font-weight: bold;
+    min-width: 120px;
+    border-radius: 10px;
+    border: 2px solid #FFFFFF; /* Белый цвет границы */
+    color: #AC0101; /* Цвет текста */
+    background-color: #FFFFFF; /* Белый цвет фона */
+    transition: 0.1s ease-in-out; /* Время перехода */
+}
+
+.checkout__form div:nth-child(1) button:hover {
+    border: 2px solid #AC0101; /* Цвет границы при наведении */
+    cursor: pointer;
+    box-shadow: 0px 2px 11px 1px rgba(255, 255, 255, 1); /* Тень при наведении */
 }

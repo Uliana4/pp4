@@ -3,25 +3,30 @@ package pl.ulianak.ecommerce.catalog;
 import java.util.HashMap;
 import java.util.List;
 
-public class HasMapProductStorage implements ProductStorage {
+public class HasMapProductStorage implements ProductStorage{
     HashMap<String, Product> products;
 
-    public HasMapProductStorage(){
-        products = new HashMap<>();
+    public HasMapProductStorage() {
+        this.products = new HashMap<>();
     }
 
     @Override
-    public List<Product> allProducts(){
-        return products.values().stream().toList();
-    }
-
-    @Override
-    public void add(Product product){
+    public void add(Product product) {
         products.put(product.getId(), product);
     }
 
     @Override
-    public Product getProductBy(String id){
+    public void setUpDatabase() {
+
+    }
+
+    @Override
+    public Product getProductById(String id) {
         return products.get(id);
+    }
+
+    @Override
+    public List<Product> getAllProducts() {
+        return products.values().stream().toList();
     }
 }

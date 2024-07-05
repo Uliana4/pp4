@@ -7,6 +7,9 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
+import java.math.BigDecimal;
+
 import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest(
@@ -24,16 +27,20 @@ public class HttpProductCatalogTest {
 
     @Test
     void itLoadsProduct(){
-        var url = String.format("http://localhost:%s/api/products", localPort);
-        catalog.addProduct("Example product", "ex descr");
+        var url = String.format("http://localhost:%s/%s",
+                localPort,
+                "api/products"
+        );
+
+        catalog.setUpDatabase();
+        catalog.addProduct("Example product", "name", BigDecimal.valueOf(10));
 
         ResponseEntity<Product[]> response = http.getForEntity(url, Product[].class);
-
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody())
-                .hasSizeGreaterThan(0)
-                .extracting("name")
-                .contains("Example product");
+                .hasSize(1)
+                .extracting("description")
+                .contains("name");
     }
 
     @Test

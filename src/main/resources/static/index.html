@@ -1,25 +1,50 @@
 <html>
     <head>
         <title>My Ecommerce</title>
-        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="css/main.css" />
     </head>
     <body>
-        <header>
-            <div class = "offer">
-                Total: <span class="offer__total">0.0</span>
-                Items Count: <span class="offer__itemsCount">0</span>
-                <form id="checkout">
-                    <input name="firstname" placeholder="Uliana"/>
-                    <input name="lastname" placeholder="Kutylovskaya"/>
-                    <input name="email" type="email" placeholder="uliana.kutylovskaya@example.com"/>
-                    <button type="submit">Accept offer</button>
+        <div class="container">
+            <div class="header">Welcome to my ecommerce shop</div>
+            <div class="catalog">
+
+
+            </div>
+            <div class="checkout">
+                <form class="checkout__form">
+                    <div>
+                        <span class="input__field">
+                            <label for="firstname">First name:&nbsp</label>
+                            <input name="firstname" id="firstname" placeholder="john" />
+                        </span>
+                        <span class="input__field">
+                            <label for="lastname">Last name:&nbsp</label>
+                            <input name="lastname" id="lastname" placeholder="doe" />
+                        </span>
+                        <span class="input__field">
+                            <label for="email">Email:&nbsp</label>
+                            <input
+                                    name="lastname"
+                                    id="email"
+                                    type="email"
+                                    placeholder="john.doe@example.com"
+                            />
+                        </span>
+                    </div>
+                    <div>
+                        <span> Total: <span class="offer__total">0.0</span></span>
+                        <span> Items Count: <span class="offer__ItemsCount">0</span></span>
+                    </div>
+                    <div>
+                        <button type="submit" id="buy">Checkout</button>
+                    </div>
                 </form>
             </div>
-        </header>
+        </div>
 
-        <h1>Welcome to my Ecommerce</h1>
-        <ul id="productsList" class="productsList"></ul>
-        <p>src/main/resources/static/index.html</p>
-        <script type="text/javascript" src="/js/main.js"></script>
     </body>
+
+    <script type="text/javascript" src="js/main.js">
+        console.log("Asd")
+    </script>
 </html>

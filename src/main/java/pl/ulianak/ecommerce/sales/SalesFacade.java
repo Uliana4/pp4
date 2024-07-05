@@ -64,6 +64,6 @@ public class SalesFacade {
 
         reservationRepository.add(reservation);
 
-        return new ReservationDetails(reservationId, paymentDetails.getPaymentUrl());
+        return new ReservationDetails(reservationId, paymentDetails.getPaymentUrl(), offer.getTotal());
     }
 }

@@ -14,7 +14,6 @@ public class Reservation {
     private Instant paidAt;
 
     public Reservation(String reservationId, CustomerDetails customerDetails, BigDecimal total) {
-
         this.reservationId = reservationId;
         this.customerDetails = customerDetails;
         this.total = total;

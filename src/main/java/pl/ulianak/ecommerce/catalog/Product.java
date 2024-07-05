@@ -12,11 +12,12 @@ public class Product {
     Product(){
     }
 
-    public Product(UUID id, String name, String description) {
+    public Product(UUID id, String name, String description, BigDecimal price) {
 
         this.id = id.toString();
         this.name = name;
         this.description = description;
+        this.price = price;
     }
 
     public String getId() {

@@ -3,7 +3,6 @@ package pl.ulianak.ecommerce.sales.cart;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import pl.ulianak.ecommerce.sales.SalesFacade;
 
 public class InMemoryCartStorage {
     Map<String, Cart> carts;

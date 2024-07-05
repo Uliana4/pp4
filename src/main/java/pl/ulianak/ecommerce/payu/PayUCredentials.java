@@ -3,7 +3,7 @@ package pl.ulianak.ecommerce.payu;
 public class PayUCredentials {
     private final String clientSecret;
     private final String clientId;
-    private boolean sandbox;
+    boolean sandbox;
 
     public PayUCredentials(String clientId, String clientSecret, boolean sandbox){
         this.clientId = clientId;

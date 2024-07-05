@@ -20,7 +20,7 @@ public class SqlTest {
     JdbcTemplate jdbcTemplate;
 
     @BeforeEach
-    void setupDb(){
+    void setupDatabase(){
         jdbcTemplate.execute("DROP TABLE `product_catalog__products` IF EXISTS;");
 
         var createTableSql = """
@@ -71,7 +71,7 @@ public class SqlTest {
 
     @Test
     void itStoreDynamicProduct() {
-        var product = new Product(UUID.randomUUID(), "My Lego Set", "Nice One");
+        var product = new Product(UUID.randomUUID(), "My Lego Set", "Nice One", BigDecimal.valueOf(0));
         product.changePrice(BigDecimal.valueOf(10.10));
 
         var myInsertSql = """
@@ -90,7 +90,7 @@ public class SqlTest {
 
     @Test
     void loadProductById(){
-        var product = new Product(UUID.randomUUID(), "My Lego Set", "Nice One");
+        var product = new Product(UUID.randomUUID(), "My Lego Set", "Nice One", BigDecimal.valueOf(0));
         product.changePrice(BigDecimal.valueOf(10.10));
 
         var myInsertSql = """
@@ -110,7 +110,8 @@ public class SqlTest {
                     var myProduct = new Product(
                          UUID.fromString(rs.getString("id")),
                          rs.getString("name"),
-                         rs.getString("name")
+                         rs.getString("name"),
+                         BigDecimal.valueOf(0)
                     );
                     myProduct.changePrice(BigDecimal.valueOf(rs.getDouble("price")));
                     return myProduct;

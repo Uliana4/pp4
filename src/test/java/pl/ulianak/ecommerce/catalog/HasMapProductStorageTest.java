@@ -17,7 +17,7 @@ public class HasMapProductStorageTest {
 
         storage.add(product);
 
-        List<Product> products = storage.allProducts();
+        List<Product> products = storage.getAllProducts();
 
         assertThat(products)
                 .hasSize(1)
@@ -26,7 +26,7 @@ public class HasMapProductStorageTest {
     }
 
     private Product thereIsExampleProduct(){
-        var product =  new Product(UUID.randomUUID(), TEST_PRODUCT_NAME, "nice one");
+        var product =  new Product(UUID.randomUUID(), TEST_PRODUCT_NAME, "nice one", BigDecimal.valueOf(100));
         product.changePrice(BigDecimal.valueOf(10.10));
 
         return product;
@@ -42,7 +42,7 @@ public class HasMapProductStorageTest {
         var productStorage = thereIsProductStorage();
 
         productStorage.add(product);
-        var loaded = productStorage.getProductBy(product.getId());
+        var loaded = productStorage.getProductById(product.getId());
 
         assertThat(loaded.getId()).isEqualTo(product.getId());
     }
