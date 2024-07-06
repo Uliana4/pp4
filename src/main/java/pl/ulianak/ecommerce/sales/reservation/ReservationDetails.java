@@ -10,7 +10,7 @@ public class ReservationDetails {
     private BigDecimal total;
 
     public ReservationDetails(@JsonProperty("reservationId") String reservationId,
-                              @JsonProperty("paymentURL") String paymentUrl,
+                              @JsonProperty("paymentUrl") String paymentUrl,
                               @JsonProperty("total") BigDecimal total) {
         this.reservationId = reservationId;
         this.paymentUrl = paymentUrl;

@@ -87,7 +87,7 @@ checkoutForm.addEventListener("submit", (event) => {
     const acceptOfferRequest = {
         firstname: checkoutForm.querySelector('input[name="firstname"]').value,
         lastname: checkoutForm.querySelector('input[name="lastname"]').value,
-        email: checkoutForm.querySelector('input[name="email"]').value
+        email: checkoutForm.querySelector('input[name="email"]').value,
     }
 
     acceptOffer(acceptOfferRequest)
